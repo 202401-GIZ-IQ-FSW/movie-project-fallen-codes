@@ -4,7 +4,7 @@
 
 ## Overview
 
-1. Working with APIs to make our websites interactive sits at the core of frontend web development. At the end, frontend websites work as interfaces that give us the ability to interace with data. All this data is coming from some form of an API.
+Working with APIs to make our websites interactive sits at the core of frontend web development. At the end, frontend websites work as interfaces that give us the ability to interace with data. All this data is coming from some form of an API.
 
 The API you will be interacting with is a movie API that can be used to retreive information about movies and actors. It is quite extensive and serves many purposes for your needs. In addition to that, it has quite a versatile searching mechanism that gives you the ability to reach for the information you need.
 
