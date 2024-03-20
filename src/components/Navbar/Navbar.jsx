@@ -1,7 +1,9 @@
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Logo from '/public/next.svg'
+import DropDown from '../Menu/DropDown'
 export default function Navbar() {
   return (
     <nav className="m-10 flex flex-row justify-between">
@@ -14,9 +16,9 @@ export default function Navbar() {
           />
           <h1 className="m-2">Fallen Codes</h1>
       </div>
-      <div className="m-4">
+      <div className="m-4 flex flex-row">
           <Link href="/" className="m-2">Home</Link>
-          <Link href="/movies" className="m-2">Movies</Link>
+          <Link href="/movies" className="m-2"> <DropDown/> </Link>
           <Link href="/actors" className="m-2">Actors</Link>
       </div>
     </nav>
