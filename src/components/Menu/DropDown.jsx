@@ -1,27 +1,31 @@
 "use client"
 import React, { useState } from 'react';
 
-export default function DropDown() {
-  const [selectedOption, setSelectedOption] = useState('Movies');
+export default function DropDown({ menuType, selectionMenu }) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = () => {
+    setIsOpen(false);
   };
 
   return (
-    <div>
-      <select
-        name="filter"
-        id="filter"
-        className="w-full px-2 py-1"
-        value={selectedOption}
-        onChange={handleSelectChange}
-      >
-        <option value="Movies">Movies</option>
-        <option value="Action">Action</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Drama">Drama</option>
-      </select>
+    <div className="relative" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+      <button  onClick={toggleMenu}>
+        {menuType}
+      </button>
+      {isOpen && (
+        <div className='absolute cursor-pointer'>
+          <ul>
+            {selectionMenu.map(option => (
+              <li key={option} onClick={handleOptionClick}>{option}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
