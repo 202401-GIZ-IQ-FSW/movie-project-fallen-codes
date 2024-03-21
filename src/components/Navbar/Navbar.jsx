@@ -12,7 +12,7 @@ export default function Navbar({ menuType }) {
   // get genres data from api
   const genresMenu = ["Action", "Drama", "Comedy", "SiFi", "Fiction"];
   return (
-    <nav className="m-10 flex flex-row justify-between">
+    <nav className="m-10 flex flex-row justify-between items-center">
       <div className="flex flex-row">
         <img src="./" alt=""  />
           <Image
@@ -23,11 +23,11 @@ export default function Navbar({ menuType }) {
           />
           <h1 className="m-2">Fallen Codes</h1>
       </div>
-      <div className="m-2 flex flex-row">
-          <Link href="/" className="mx-4">Home</Link>
-          <Link href="/movies" className="mx-4"> <DropDown menuType={menuType[0]} selectionMenu={moviesMenu}/> </Link>
-          <div className='mx-4'><DropDown menuType={menuType[1]} selectionMenu={genresMenu} /></div>
-          <Link href="/actors" className="mx-4">Actors</Link>
+      <div className="m-2 flex flex-row items-center">
+          <Link href="/" className="mx-2 p-2">Home</Link>
+          <Link href="/movies" className="mx-2"> <DropDown menuType={menuType[0]} selectionMenu={moviesMenu}/> </Link>
+          <div className='mx-2'><DropDown menuType={menuType[1]} selectionMenu={genresMenu} /></div>
+          <Link href="/actors" className="mx-1 p-1">Actors</Link>
       </div>
       <div className="ml-2 relative">
         <input className="p-2 pl-12" type="text" name="search" placeholder="Search for movies..." />
