@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 export default function DropDown({ menuType, selectionMenu }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); 
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

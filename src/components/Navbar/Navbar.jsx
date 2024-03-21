@@ -6,14 +6,15 @@ import Logo from '/public/next.svg'
 import searchIcon from '/public/search-icon.svg'
 import DropDown from '../Menu/DropDown'
 
-export default function Navbar() {
+export default function Navbar({ menuType }) {
   const moviesMenu = ["Top Rate", "Popular", "Latest", "Now playing", "Upcoming"];
-  const menuType = ["Movies", "Genres"];
+ 
   // get genres data from api
   const genresMenu = ["Action", "Drama", "Comedy", "SiFi", "Fiction"];
   return (
     <nav className="m-10 flex flex-row justify-between">
       <div className="flex flex-row">
+        <img src="./" alt=""  />
           <Image
             className="mr-2"
             src={Logo}
