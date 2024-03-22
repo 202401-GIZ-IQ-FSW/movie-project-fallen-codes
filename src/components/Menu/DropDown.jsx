@@ -31,7 +31,13 @@ export default function DropDown({ menuType, selectionMenu }) {
         <div className='absolute cursor-pointer bg-slate-200 p-2'>
           <ul>
             {selectionMenu.map(option => (
-              <li className={`hover:text-blue-700 w-max ${ menuType === "Genres" ? "mr-7" : "mr-0" } `} key={option} onClick={handleOptionClick}>{option}</li>
+              <li 
+              className={`hover:text-blue-700 w-max ${ menuType === "Genres" ? "mr-7" : "mr-0" } `} 
+              key={` ${ menuType === "Genres" ? option.id : option } `} 
+              onClick={handleOptionClick}
+              >
+                {` ${ menuType === "Genres" ? option.name : option } `}
+              </li>
             ))}
           </ul>
         </div>
