@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import dropDownIcon from '/public/drop-down.svg';
 
-export default function DropDown({ menuType, selectionMenu }) {
+export default function MoviesMenu({ menuType, selectionMenu }) {
   const [isOpen, setIsOpen] = useState(false); 
 
   const toggleMenu = () => {
@@ -20,7 +20,6 @@ export default function DropDown({ menuType, selectionMenu }) {
         {menuType}
         <span className="pl-3">
           <Image
-            className=''
             src={dropDownIcon}
             alt='search icon'
             width={15}
@@ -32,11 +31,11 @@ export default function DropDown({ menuType, selectionMenu }) {
           <ul>
             {selectionMenu.map(option => (
               <li 
-              className={`hover:text-blue-700 w-max ${ menuType === "Genres" ? "mr-7" : "mr-0" } `} 
-              key={` ${ menuType === "Genres" ? option.id : option } `} 
+              className="hover:text-blue-700 w-max mr-0"
+              key={option}
               onClick={handleOptionClick}
               >
-                {` ${ menuType === "Genres" ? option.name : option } `}
+                {option}
               </li>
             ))}
           </ul>

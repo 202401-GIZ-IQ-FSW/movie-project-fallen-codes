@@ -1,4 +1,4 @@
-import DropDown from '@/components/Menu/DropDown'
+import DropDown from '@/components/Menu/GenresMenu'
 import React from 'react'
 
 export default function page() {

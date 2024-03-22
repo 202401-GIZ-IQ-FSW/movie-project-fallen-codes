@@ -4,14 +4,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Logo from '/public/logo-fallen-codes-1.png'
 import searchIcon from '/public/search-icon.svg'
-import DropDown from '../Menu/DropDown'
+import GenresMenu from '../Menu/GenresMenu'
+import MoviesMenu from '../Menu/MoviesMenu'
 import {genresList} from '@/data/genresList'
 
 
-export default function Navbar({ menuType }) {
-  const moviesMenu = ["Top Rate", "Popular", "Latest", "Now playing", "Upcoming"];
-  // get genres data from api
-  // ["Action", "Drama", "Comedy", "SiFi", "Fiction"]
+export default function Navbar() {
+  const moviesMenu = ["Now playing", "Popular", "Top Rated", "Upcoming"];
+  
   const [genresMenu, setGenresMenu] = useState([]);
 
   useEffect(() => {
@@ -41,8 +41,8 @@ export default function Navbar({ menuType }) {
       </div>
       <div className="m-2 flex flex-row items-center">
           <Link href="/" className="mx-2 p-2">Home</Link>
-          <Link href="/movies" className="mx-2"> <DropDown menuType={menuType[0]} selectionMenu={moviesMenu}/> </Link>
-          <div className='mx-2'><DropDown menuType={menuType[1]} selectionMenu={genresMenu.genres} /></div>
+          <Link href="/movies" className="mx-2"> <MoviesMenu menuType="Movies" selectionMenu={moviesMenu}/> </Link>
+          <div className='mx-2'><GenresMenu menuType="Genres" selectionMenu={genresMenu.genres} /></div>
           <Link href="/actors" className="mx-1 p-1">Actors</Link>
       </div>
       <div className="ml-2 relative">
