@@ -17,20 +17,19 @@ export default function Navbar() {
   useEffect(() => {
     const fetchGenres = async () => {
       try {
-        const genres = await genresList();
-        setGenresMenu(genres);
+        const genreOptions = await genresList();
+        setGenresMenu(genreOptions.genres);
       } catch (error) {
         console.error('Error fetching genres:', error);
       }
     };
     fetchGenres();
-    console.log("fetching-data")
+    console.log("fetching-genres-navbar")
   }, []);
 
   return (
-    <nav className="m-10 flex flex-row justify-between items-center">
+    <nav className="m-10 flex flex-wrap lg:flex-row justify-center lg:justify-between items-center">
       <div className="flex flex-row items-center">
-        <img src="./" alt=""  />
           <Image
             className="mr-2 rounded-full"
             src={Logo}
@@ -39,13 +38,13 @@ export default function Navbar() {
           />
           <h1 className="m-2">Fallen Codes</h1>
       </div>
-      <div className="m-2 flex flex-row items-center">
+      <div className="mt-4 lg:mt-2 m-2 flex flex-row items-center">
           <Link href="/" className="mx-2 p-2">Home</Link>
           <Link href="/movies" className="mx-2"> <MoviesMenu menuType="Movies" selectionMenu={moviesMenu}/> </Link>
-          <div className='mx-2'><GenresMenu menuType="Genres" selectionMenu={genresMenu.genres} /></div>
+          <div className='mx-2'><GenresMenu menuType="Genres" selectionMenu={genresMenu} /></div>
           <Link href="/actors" className="mx-1 p-1">Actors</Link>
       </div>
-      <div className="ml-2 relative">
+      <div className="mt-4 lg:mt-0 ml-2 relative">
         <input className="p-2 pl-12" type="text" name="search" placeholder="Search for movies..." />
         <span className="flex items-center p-2 pr-4 absolute left-1 top-1 ">
           <Image
