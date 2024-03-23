@@ -1,6 +1,4 @@
-import DropDown from "@/components/Menu/GenresMenu"
-import MovieCards from "@/components/MovieCards/MovieCards"
-import React from "react"
+import React from 'react'
 
 export default function page() {
   return (

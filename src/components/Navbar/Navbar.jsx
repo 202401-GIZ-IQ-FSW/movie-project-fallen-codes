@@ -28,7 +28,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="m-10 flex flex-wrap lg:flex-row justify-center lg:justify-between items-center">
+    <nav className=" m-6 flex flex-wrap lg:flex-row justify-center lg:justify-between items-center">
       <div className="flex flex-row items-center">
           <Image
             className="mr-2 rounded-full"
@@ -40,8 +40,12 @@ export default function Navbar() {
       </div>
       <div className="mt-4 lg:mt-2 m-2 flex flex-row items-center">
           <Link href="/" className="mx-2 p-2">Home</Link>
-          <Link href="/movies" className="mx-2"> <MoviesMenu menuType="Movies" selectionMenu={moviesMenu}/> </Link>
-          <div className='mx-2'><GenresMenu menuType="Genres" selectionMenu={genresMenu} /></div>
+          <div className="mx-2"> 
+            <MoviesMenu menuType="Movies" selectionMenu={moviesMenu}/> 
+          </div>
+          <div className='mx-2'> 
+            <GenresMenu menuType="Genres" selectionMenu={genresMenu} />
+          </div>
           <Link href="/actors" className="mx-1 p-1">Actors</Link>
       </div>
       <div className="mt-4 lg:mt-0 ml-2 relative">
