@@ -2,7 +2,7 @@ import React from "react"
 
 const MovieCards = ({ title, releaseYear, genre, poster }) => {
   return (
-    <div className="flex flex-col lg:flex-row lg:flex-wrap bg-white shadow-md rounded-lg overflow-hidden my-4 w-100% max-w-300 ">
+    <div className="flex flex-col lg:flex-row lg:flex-wrap bg-white shadow-md rounded-lg overflow-hidden my-4 w-100% max-w-150 ">
       <img src={poster} alt={title} className="w-100% md:w-50%" />
       <div className="p-4 flex flex-col justify-between leading-normal">
         <div className="mb-8">
