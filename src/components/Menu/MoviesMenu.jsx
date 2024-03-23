@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import dropDownIcon from '/public/drop-down.svg';
+import Link from 'next/link';
 
 export default function MoviesMenu({ menuType, selectionMenu }) {
   const [isOpen, setIsOpen] = useState(false); 
@@ -29,13 +30,13 @@ export default function MoviesMenu({ menuType, selectionMenu }) {
       {isOpen && (
         <div className='absolute cursor-pointer bg-slate-200 p-2'>
           <ul>
-            {selectionMenu.map(option => (
+            {selectionMenu.map(category => (
               <li 
               className="hover:text-blue-700 w-max mr-0"
-              key={option}
+              key={category}
               onClick={handleOptionClick}
               >
-                {option}
+               <Link href={`/movies/${category.toLowerCase().replace(" ", "_")}`}>{category}</Link>
               </li>
             ))}
           </ul>
