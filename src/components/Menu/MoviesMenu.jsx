@@ -32,11 +32,7 @@ export default function MoviesMenu({ menuType, selectionMenu }) {
           <ul>
             {selectionMenu.map(category => (
               <li 
-<<<<<<< HEAD
               className="hover:text-red-900 w-max mr-0"
-=======
-              className="hover:text-blue-700 w-max mr-0"
->>>>>>> 327d05c0bb050c1a38df3f6f921032b34144242a
               key={category}
               onClick={handleOptionClick}
               >
