@@ -1,6 +1,6 @@
 import React from "react"
 
-const MovieCards = ({ title, releaseYear, genre, poster }) => {
+const MovieCards = ({ title, releaseYear, genre, poster, ratings }) => {
   return (
     <div className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden my-4 w-56 sm:w-36 h-auto mx-2 border-solid border-gray-600 border-2">
       <div>
@@ -11,8 +11,12 @@ const MovieCards = ({ title, releaseYear, genre, poster }) => {
           <div className="text-gray-900 font-bold text-l mb-2 font-mono">
             {title}
           </div>
-          <p className="text-gray-700 text-base">{releaseYear}</p>
+          <hr className="border-t-2"/>
           <p className="text-gray-700 text-base">{genre}</p>
+          <hr className="border-t-2"/>
+          <p className="text-gray-700 text-base">{releaseYear}</p>
+          <hr className="border-t-2"/>
+          <p className="text-gray-700 text-base">{ratings}</p>    {/* added ratings */}
         </div>
       </div>
     </div>

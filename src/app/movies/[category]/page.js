@@ -66,10 +66,12 @@ export default function page({params}) {
         </div>
         <div className="flex flex-wrap justify-center">
             {movies.map(movie => { 
-                const movieGenre = movie.genre_ids.map(genreID => {
-                 const genre = movieGenres.find(genre => genre.id === genreID);
-                    return genre ? genre.name : ''; // Check if genre is defined before accessing its name
-                }).join(", ");
+              const genre = movieGenres.find((genre) => genre.id === movie.genre_ids[0]) ;
+              const movieGenre = genre ? genre.name : "" ;
+                // const movieGenre = movie.genre_ids.map(genreID => {
+                //  const genre = movieGenres.find(genre => genre.id === genreID);
+                //     return genre ? genre.name : ''; // Check if genre is defined before accessing its name
+                // }).join(", ");
         
                 return (
                     <MovieCards 
@@ -78,6 +80,7 @@ export default function page({params}) {
                         releaseYear={movie.release_date.slice(0, 4)} 
                         genre={movieGenre} 
                         poster={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                        ratings={movie.vote_average.toFixed(1)} // added ratings
                     />
                 );
             })}
