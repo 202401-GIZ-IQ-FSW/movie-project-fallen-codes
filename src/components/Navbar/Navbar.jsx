@@ -1,13 +1,12 @@
 "use client"
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import Logo from '/public/logo-black.svg'
-import searchIcon from '/public/search-icon.svg'
-import GenresMenu from '../Menu/GenresMenu'
-import MoviesMenu from '../Menu/MoviesMenu'
-import {genresList} from '@/data/genresList'
-
+import React, { useState, useEffect } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import Logo from "/public/logo-black.svg"
+import searchIcon from "/public/search-icon.svg"
+import GenresMenu from "../Menu/GenresMenu"
+import MoviesMenu from "../Menu/MoviesMenu"
+import { genresList } from "@/data/genresList"
 
 export default function Navbar() {
   const moviesMenu = ["Now playing", "Popular", "Top Rated", "Upcoming"]
@@ -28,16 +27,22 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className="bg-red-900 m-4 flex flex-wrap lg:flex-row justify-center lg:justify-between items-center rounded-xl">
+    <nav
+      style={{ backgroundColor: "rgb(118, 171, 174)" }}
+      className="m-4 flex flex-wrap lg:flex-row justify-center lg:justify-between items-center rounded-xl"
+    >
       <div className="flex flex-row items-center">
         <Image
-          className="mr-2 rounded-full size-60 "
+          className="mr-2 rounded-md size-36 "
           src={Logo}
           alt="site logo"
           width={100}
         />
       </div>
-      <div className="mt-4 lg:mt-2 m-2 flex flex-row items-center">
+      <div
+        style={{ backgroundColor: "rgb(49, 54, 63)" }}
+        className="px-8 py-2 rounded-2xl mt-4 lg:mt-2 m-2 flex flex-row items-center"
+      >
         <Link href="/" className="mx-2 p-2 text-slate-300">
           Home
         </Link>
