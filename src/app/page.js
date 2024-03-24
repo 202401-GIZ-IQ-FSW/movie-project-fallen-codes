@@ -5,16 +5,19 @@ import { genresList } from "@/data/genresList"
 import MovieCards from "@/components/MovieCards/MovieCards"
 
 export default function Home() {
-  const [movies, setMovies] = useState([])
   const [movieGenres, setMovieGenres] = useState([])
+  const [movies, setMovies] = useState([])
+  const [totalPages, setTotalPages] = useState(1)
   const [pageId, setPageId] = useState(1)
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const movieItems = await moviesData(pageId)
-        const movies = movieItems.results
-        setMovies(movies)
+        const results = movieItems.results
+        setMovies(results)
+        const resultsTotalPages = movieItems.total_pages
+        setTotalPages(resultsTotalPages)
       } catch (error) {
         console.error("Error fetching genres:", error)
       }
@@ -37,7 +40,7 @@ export default function Home() {
   }, [])
 
   function handleNextPage() {
-    if (pageId >= 1 && pageId <= 198) {
+    if (pageId >= 1 && pageId <= totalPages) {
       setPageId((pageId) => (pageId += 1))
     }
   }
