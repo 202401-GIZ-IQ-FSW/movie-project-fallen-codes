@@ -35,7 +35,6 @@ export default function Navbar() {
           alt="site logo"
           width={70}
         />
-        <h1 className="m-2">Fallen Codes</h1>
       </div>
       <div className="mt-4 lg:mt-2 m-2 flex flex-row items-center">
         <Link href="/" className="mx-2 p-2">
