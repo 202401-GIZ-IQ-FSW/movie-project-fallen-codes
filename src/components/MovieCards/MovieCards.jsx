@@ -6,19 +6,6 @@ const MovieCards = ({ title, releaseYear, genre, poster, ratings }) => {
       <div>
         <img src={poster} alt={title} className="w-80% h-auto" />
       </div>
-      <div className="p-4 flex flex-col justify-between leading-normal">
-        <div className="mb-8">
-          <div className="text-gray-900 font-bold text-l mb-2 font-mono">
-            {title}
-          </div>
-          <hr className="border-t-2"/>
-          <p className="text-gray-700 text-base">{genre}</p>
-          <hr className="border-t-2"/>
-          <p className="text-gray-700 text-base">{releaseYear}</p>
-          <hr className="border-t-2"/>
-          <p className="text-gray-700 text-base">{ratings}</p>    {/* added ratings */}
-        </div>
-      </div>
     </div>
   )
 }
