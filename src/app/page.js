@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react"
 import { moviesData } from "@/data/moviesData"
 import { genresList } from "@/data/genresList"
 import MovieCards from "@/components/MovieCards/MovieCards"
+import NavButtons from "@/components/Buttons/NavButtons"
 
 export default function Home() {
   const [movieGenres, setMovieGenres] = useState([])
@@ -62,6 +63,7 @@ export default function Home() {
       >
         Now Playing
       </h2>
+      <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
       <div className="flex flex-wrap justify-center">
         {movies.map((movie) => {
           const movieGenre = movie.genre_ids.map(genreID => {
@@ -81,32 +83,7 @@ export default function Home() {
           )
         })}
       </div>
-      <div
-        style={{ backgroundColor: "rgb(118, 171, 174)" }}
-        className="flex flex-row justify-around m-1 p-1 px-8 rounded-xl"
-      >
-        <button
-          style={{ color: "rgb(49, 54, 63)" }}
-          className="mx-1 font-bold"
-          onClick={handlePrevPage}
-        >
-          Pervious
-        </button>
-        <h1
-          style={{ color: "rgb(49, 54, 63)" }}
-          className="m-2 mx-10 font-bold bg-slate-300 rounded-full px-3"
-        >
-          {" "}
-          {pageId}{" "}
-        </h1>
-        <button
-          style={{ color: "rgb(49, 54, 63)" }}
-          className="m-2 font-bold pr-1"
-          onClick={handleNextPage}
-        >
-          Next
-        </button>
-      </div>
+      <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
     </main>
   )
 }

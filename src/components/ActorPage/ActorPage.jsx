@@ -6,7 +6,7 @@ const ActorPage = () => {
       <div className="mx-auto p-16 grid-cols-2 w-full flex justify-between border-solid border-2 border-red-800">
         <div className="w-80 md:w-80 border-solid border-2 border-red-800">
           <img
-            src={actorpicture}
+            src={actorPicture}
             alt={title}
             className=" mx-auto rounded-lg shadow-lg"
           />
