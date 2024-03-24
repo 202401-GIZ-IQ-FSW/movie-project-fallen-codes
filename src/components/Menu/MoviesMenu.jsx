@@ -45,3 +45,4 @@ export default function MoviesMenu({ menuType, selectionMenu }) {
     </div>
   );
 }
+
