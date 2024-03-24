@@ -1,7 +1,7 @@
 
 import React from 'react'
 import actorsinfo from './actors'
-export default function page() {
+export default function actorsinfo() {
   return (
     <>
    <div className='m-4 flex justify-center bg-slate-800 rounded-lg '>

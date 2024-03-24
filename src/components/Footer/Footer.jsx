@@ -17,7 +17,7 @@ export default function Footer() {
                         <i class="fab fa-github mr-2"></i>
                         
                     </a>
-                    <a href="https://linkedin.com/in/person1" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
+                    <a href="https://www.linkedin.com/in/aween-ezzat-/" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
                         <i class="fab fa-linkedin mr-2"></i>
                        
                     </a>
@@ -28,11 +28,11 @@ export default function Footer() {
             <div class="bg-black rounded-lg shadow p-6 w-full">
                 <h3 class="text-lg font-semibold mb-2 text-gray-400 flex justify-center">Shvan</h3>
                 <div class="flex justify-center space-x-4">
-                    <a href="https://github.com/person2" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
+                    <a href="https://github.com/Sh89hkm" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
                         <i class="fab fa-github mr-2"></i>
                         
                     </a>
-                    <a href="https://linkedin.com/in/person2" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
+                    <a href="https://www.linkedin.com/in/sh89hkm/" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
                         <i class="fab fa-linkedin mr-2"></i>
                        
                     </a>
@@ -43,11 +43,11 @@ export default function Footer() {
             <div class="bg-black rounded-lg shadow p-6 w-full">
                 <h3 class="text-lg font-semibold mb-2 text-gray-400 flex justify-center">Dilan</h3>
                 <div class="flex justify-center space-x-4">
-                    <a href="https://github.com/person3" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
+                    <a href="https://www.linkedin.com/in/dilan-ahmed-02b671212/" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
                         <i class="fab fa-github mr-2"></i>
                         
                     </a>
-                    <a href="https://linkedin.com/in/person3" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
+                    <a href="https://github.com/Dilan-Ahmed" target="_blank" rel="noopener noreferrer" class="text-red-900 hover:underline flex items-center">
                         <i class="fab fa-linkedin mr-2"></i>
                         
                     </a>
