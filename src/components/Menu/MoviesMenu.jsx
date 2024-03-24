@@ -15,7 +15,7 @@ export default function MoviesMenu({ menuType, selectionMenu }) {
   };
 
   return (
-    <div className="pr-4 relative hover:bg-slate-200 " onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+    <div className="pr-4 relative hover:bg-black " onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
       <button className='p-2 pt-1 pr-1 pb-1 flex flex-row items-center' onClick={toggleMenu}>
         {menuType}
         <span className="pl-3">
@@ -27,11 +27,11 @@ export default function MoviesMenu({ menuType, selectionMenu }) {
         </span>
       </button>
       {isOpen && (
-        <div className='absolute cursor-pointer bg-slate-200 p-2'>
+        <div className='absolute cursor-pointer bg-black p-2'>
           <ul>
             {selectionMenu.map(option => (
               <li 
-              className="hover:text-blue-700 w-max mr-0"
+              className="hover:text-red-900 w-max mr-0"
               key={option}
               onClick={handleOptionClick}
               >
