@@ -14,15 +14,15 @@ const MoviePage = ({ movie }) => {
     <>
       {movie && (
         <main style={{ backgroundColor: "rgb(238, 238, 238)" }}>
-          <div className="mx-auto p-16 grid-cols-2 w-full flex justify-between border-solid border-2 border-red-800">
-            <div className="mr-4 w-80 lg:w-fit border-solid border-2 border-red-800 rounded-lg">
+          <div className="mx-auto p-16 grid-cols-2 w-full flex justify-between sd:flex-wrap">
+            <div className="mr-4 md:w-80 lg:w-96 rounded-lg">
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={movie.title}
                 className="w-auto h-auto mx-auto rounded-lg shadow-lg"
               />
             </div>
-            <div>
+            <div className="lg: max-w-8/12 md:w-2/3">
               <h1
                 style={{ color: "rgb(34, 40, 49)" }}
                 className="text-3xl  px-4 py-2 font-bold mb-2 bg-slate-200 rounded-md w-64 shadow-md hover:bg-slate-400"
