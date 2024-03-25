@@ -2,7 +2,7 @@ import React from "react"
 export default function Footer() {
   return (
     <div
-      style={{ backgroundColor: "rgb(49, 54, 63)" }}
+      style={{ backgroundColor: "rgb(12, 45, 87)" }}
       className="m-4 flex justify-center rounded-lg"
     >
       <div className="container m-4 rounded-lg ">
@@ -10,7 +10,7 @@ export default function Footer() {
           Fallen Codes
         </h1>
 
-        <div class="container mx-auto py-8">
+        <div class="container mx-auto py-2">
           <div class="flex flex-wrap -mx-4">
             <div class="flex flex-col flex-grow justify-between items-center md:flex-row md:w-1/4 px-4 mb-4">
               <div class="bg-black rounded-lg shadow p-6 w-full">
@@ -22,7 +22,8 @@ export default function Footer() {
                     href="https://github.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-red-900 hover:underline flex items-center"
+                    class="hover:underline flex items-center"
+                    style={{ color: "rgb(252, 103, 54)" }}
                   >
                     <i class="fab fa-github mr-2"></i>
                   </a>
@@ -30,7 +31,8 @@ export default function Footer() {
                     href="https://www.linkedin.com/in/aween-ezzat-/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-red-900 hover:underline flex items-center"
+                    class=" hover:underline flex items-center"
+                    style={{ color: "rgb(252, 103, 54)" }}
                   >
                     <i class="fab fa-linkedin mr-2"></i>
                   </a>
@@ -47,7 +49,8 @@ export default function Footer() {
                     href="https://github.com/Sh89hkm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-red-900 hover:underline flex items-center"
+                    class="hover:underline flex items-center"
+                    style={{ color: "rgb(252, 103, 54)" }}
                   >
                     <i class="fab fa-github mr-2"></i>
                   </a>
@@ -55,7 +58,8 @@ export default function Footer() {
                     href="https://www.linkedin.com/in/sh89hkm/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-red-900 hover:underline flex items-center"
+                    class="hover:underline flex items-center"
+                    style={{ color: "rgb(252, 103, 54)" }}
                   >
                     <i class="fab fa-linkedin mr-2"></i>
                   </a>
@@ -72,7 +76,8 @@ export default function Footer() {
                     href="https://github.com/Dilan-Ahmed"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-red-900 hover:underline flex items-center"
+                    class="  hover:underline flex items-center"
+                    style={{ color: "rgb(252, 103, 54)" }}
                   >
                     <i class="fab fa-github mr-2"></i>
                   </a>
@@ -80,7 +85,8 @@ export default function Footer() {
                     href="https://www.linkedin.com/in/dilan-ahmed-02b671212/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-red-900 hover:underline flex items-center"
+                    class="hover:underline flex items-center"
+                    style={{ color: "rgb(252, 103, 54)" }}
                   >
                     <i class="fab fa-linkedin mr-2"></i>
                   </a>
@@ -97,7 +103,8 @@ export default function Footer() {
                     href="https://github.com/person4"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-red-900 hover:underline flex items-center"
+                    class="  hover:underline flex items-center"
+                    style={{ color: "rgb(252, 103, 54)" }}
                   >
                     <i class="fab fa-github mr-2"></i>
                   </a>
@@ -105,7 +112,8 @@ export default function Footer() {
                     href="https://linkedin.com/in/person4"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-red-900 hover:underline flex items-center"
+                    class=" hover:underline flex items-center"
+                    style={{ color: "rgb(252, 103, 54)" }}
                   >
                     <i class="fab fa-linkedin mr-2"></i>
                   </a>

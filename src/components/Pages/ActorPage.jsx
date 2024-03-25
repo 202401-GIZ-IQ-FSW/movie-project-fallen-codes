@@ -18,7 +18,7 @@ const ActorPage = ({ actor }) => {
   return (
     <>
       {actor && (
-        <main style={{ backgroundColor: "rgb(238, 238, 238)" }}>
+        <main style={{ backgroundColor: "rgb(12, 45, 87)" }}>
           <div className="mx-auto p-16 grid-cols-2 w-full flex justify-between sd:flex-wrap">
             <div className="mr-4 md:min-w-80 lg:min-w-96 rounded-lg ">
               <img
