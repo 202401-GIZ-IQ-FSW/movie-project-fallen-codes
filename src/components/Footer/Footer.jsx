@@ -69,7 +69,7 @@ export default function Footer() {
                 </h3>
                 <div class="flex justify-center space-x-4">
                   <a
-                    href="https://www.linkedin.com/in/dilan-ahmed-02b671212/"
+                    href="https://github.com/Dilan-Ahmed"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-red-900 hover:underline flex items-center"
@@ -77,7 +77,7 @@ export default function Footer() {
                     <i class="fab fa-github mr-2"></i>
                   </a>
                   <a
-                    href="https://github.com/Dilan-Ahmed"
+                    href="https://www.linkedin.com/in/dilan-ahmed-02b671212/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-red-900 hover:underline flex items-center"
