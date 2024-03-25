@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { moviesData } from '@/data/moviesData'
 import { genresList } from '@/data/genresList'
-import MovieCards from '@/components/MovieCards/MovieCards'
+import MovieCards from '@/components/Cards/MovieCards'
 import NavButtons from "@/components/Buttons/NavButtons"
 
 export default function page({params}) {
@@ -80,10 +80,9 @@ export default function page({params}) {
                 return (
                     <MovieCards 
                         key={movie.id}
-                        title={movie.title} 
-                        releaseYear={movie.release_date.slice(0, 4)} 
+                        movie={movie}
                         genre={movieGenre} 
-                        poster={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                        releaseYear={movie.release_date.slice(0, 4)} 
                         ratings={movie.vote_average.toFixed(1)} // added ratings
                     />
                 )

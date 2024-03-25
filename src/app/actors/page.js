@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react"
 import { actorsData } from "@/data/actorsData"
-import ActorCards from "@/components/ActorCards/ActorCards"
+import ActorCards from "@/components/Cards/ActorCards"
 import NavButtons from "@/components/Buttons/NavButtons"
 
 export default function page() {
@@ -32,7 +32,7 @@ export default function page() {
   }
 
   function handlePrevPage() {
-    if (pageId >= 2) {
+    if (pageId >= 1) {
       setPageId((pageId) => (pageId -= 1))
     }
   }
@@ -54,6 +54,7 @@ export default function page() {
             return (
               <ActorCards
                 key={actor.id}
+                actor={actor}
                 actorName={actor.name}
                 actorImage={`https://image.tmdb.org/t/p/w300/${actor.profile_path}`}
               />

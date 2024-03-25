@@ -3,13 +3,8 @@ const baseUrl = "https://api.themoviedb.org/3/movie/"
 const apiKey = `?api_key=${API_KEY}&language=en-US&page=`; 
 
 export const moviesData = async (pageId=1, urlCategory="now_playing") => {
-    const url = baseUrl + urlCategory + apiKey + pageId.toString() ;
+    const url = baseUrl + urlCategory + apiKey + pageId.toString();
     const res = await fetch(url);
     const data = res.json();
     return data;
 };
-
-// const res = fetch(url, options)
-//   .then(res => res.json())
-//   .then(json => console.log(json))
-//   .catch(err => console.error('error:' + err));
