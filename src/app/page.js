@@ -54,22 +54,17 @@ export default function Home() {
 
   return (
     <main
-      style={{ backgroundColor: "rgb(238, 238, 238)" }}
+      style={{ backgroundColor: "rgb(12, 45, 87)" }}
       className="flex min-h-screen flex-col items-center p-4"
     >
-      <h2
-        style={{ color: "rgb(49, 54, 63)" }}
-        className={`mb-3 text-2xl font-semibold`}
-      >
-        Now Playing
-      </h2>
-      <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
       <div className="flex flex-wrap justify-center">
         {movies.map((movie) => {
-          const movieGenre = movie.genre_ids.map(genreID => {
-            const genre = movieGenres.find(genre => genre.id === genreID)
-            return genre ? genre.name : '' // Check if genre is defined before accessing its name
-          }).join(", ")
+          const movieGenre = movie.genre_ids
+            .map((genreID) => {
+              const genre = movieGenres.find((genre) => genre.id === genreID)
+              return genre ? genre.name : "" // Check if genre is defined before accessing its name
+            })
+            .join(", ")
 
           return (
             <MovieCards
@@ -82,7 +77,11 @@ export default function Home() {
           )
         })}
       </div>
-      <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
+      <NavButtons
+        pageId={pageId}
+        handlePrevPage={handlePrevPage}
+        handleNextPage={handleNextPage}
+      />
     </main>
   )
 }

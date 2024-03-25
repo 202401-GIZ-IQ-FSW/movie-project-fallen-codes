@@ -28,42 +28,44 @@ export default function Navbar() {
 
   return (
     <nav
-      style={{ backgroundColor: "rgb(118, 171, 174)" }}
-      className="m-4 flex flex-wrap lg:flex-row justify-center lg:justify-between items-center rounded-xl"
+      style={{ backgroundColor: "rgb(12, 45, 87)" }}
+      className="flex flex-wrap lg:flex-row justify-center lg:justify-between items-center "
     >
       <div className="flex flex-row items-center">
         <Image
-          className="mr-2 rounded-md size-36 "
+          style={{ borderColor: "rgb(252, 103, 54)" }}
+          className="mr-2 rounded-full m-4 size-36 bg-transparent border-solid border-4"
           src={Logo}
           alt="site logo"
           width={100}
         />
       </div>
       <div
-        style={{ backgroundColor: "rgb(49, 54, 63)" }}
-        className="px-8 py-2 rounded-2xl mt-4 lg:mt-2 m-2 flex flex-row items-center"
+        style={{ backgroundColor: "rgb(252, 103, 54)" }}
+        className=" rounded-2xl mt-4 mx-0 lg:mt-2 px-4 py-2 flex flex-row items-center border-solid border-2 border-white"
       >
-        <Link href="/" className="mx-2 p-2 text-slate-300">
+        <Link href="/" className="mx-2 p-2 text-white">
           Home
         </Link>
-        <div className="mx-2 text-slate-300">
+        <div className="mx-2 text-white">
           <MoviesMenu menuType="Movies" selectionMenu={moviesMenu} />
         </div>
-        <div className="mx-2 text-slate-300">
+        <div className="mx-2 text-white">
           <GenresMenu menuType="Genres" selectionMenu={genresMenu} />
         </div>
-        <Link href="/actors" className="mx-1 p-1 text-slate-300">
+        <Link href="/actors" className="mx-1 p-1 text-white">
           Actors
         </Link>
       </div>
-      <div className="mt-4 lg:mt-0 ml-2 relative pb-1 pr-2">
+      <div className="mt-4 mr-12 lg:mt-0 relative pb-1 pr-2 ">
         <input
-          className="p-2 pl-12 rounded-xl"
+          style={{ borderColor: "rgb(252, 103, 54)" }}
+          className="p-2  pl-12 rounded-xl border-solid border-4"
           type="text"
           name="search"
           placeholder="Search for movies..."
         />
-        <span className="flex items-center p-2 pr-4 absolute left-1 top-1 ">
+        <span className="flex items-center p-2 pr-4 absolute left-1 top-1 fill-orange ">
           <Image src={searchIcon} alt="search icon" width={20} />
         </span>
       </div>
