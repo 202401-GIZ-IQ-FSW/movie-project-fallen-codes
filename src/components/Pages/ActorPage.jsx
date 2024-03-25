@@ -19,7 +19,7 @@ const ActorPage = ({ actor }) => {
     <>
       {actor && (
         <main style={{ backgroundColor: "rgb(12, 45, 87)" }}>
-          <div className="mx-auto p-16 grid-cols-2 w-full flex justify-between sd:flex-wrap">
+          <div className="mx-auto p-16 grid-cols-2 w-full  md:flex justify-between ">
             <div className="mr-4 md:min-w-80 lg:min-w-96 rounded-lg ">
               <img
                 src={`https://image.tmdb.org/t/p/w300/${actor.profile_path}`}
@@ -27,10 +27,13 @@ const ActorPage = ({ actor }) => {
                 className="w-auto h-auto mx-auto rounded-lg shadow-lg"
               />
             </div>
-            <div className="lg: max-w-8/12 md:w-2/3 ">
+            <div
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+              className="p-4 rounded-lg lg:max-w-8/12  "
+            >
               <h1
-                style={{ color: "rgb(118, 171, 174)" }}
-                className="text-3xl px-4 py-2 font-bold mb-2 bg-slate-200 rounded-md w-96 text-center"
+                style={{ color: "rgb(252, 103, 54)" }}
+                className="text-3xl  px-4 py-2 font-bold mb-2 bg-slate-200 rounded-md w-96 text-center"
               >
                 {actor.name}
               </h1>
