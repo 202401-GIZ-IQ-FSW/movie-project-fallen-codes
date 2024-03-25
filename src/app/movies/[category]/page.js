@@ -5,7 +5,7 @@ import { genresList } from '@/data/genresList'
 import MovieCards from '@/components/Cards/MovieCards'
 import NavButtons from "@/components/Buttons/NavButtons"
 
-export default function page({params}) {
+export default function Movies({params}) {
   const [movieGenres, setMovieGenres] = useState([]);
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(1)

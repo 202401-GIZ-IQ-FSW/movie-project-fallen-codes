@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import MoviePage from '@/components/Pages/MoviePage'
 import { movieData } from '@/data/movieData'
 
-export default function page({params}) {
+export default function Movie({params}) {
   const [movie, setMovie] = useState([]);
   
   useEffect(() => {

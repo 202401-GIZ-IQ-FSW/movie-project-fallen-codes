@@ -4,7 +4,7 @@ import { actorsData } from "@/data/actorsData"
 import ActorCards from "@/components/Cards/ActorCards"
 import NavButtons from "@/components/Buttons/NavButtons"
 
-export default function page() {
+export default function Actors() {
   const [actors, setActors] = useState([])
   const [totalPages, setTotalPages] = useState(1)
   const [pageId, setPageId] = useState(1)
