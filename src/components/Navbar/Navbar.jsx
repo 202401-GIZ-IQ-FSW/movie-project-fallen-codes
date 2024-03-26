@@ -57,10 +57,10 @@ export default function Navbar() {
           Actors
         </Link>
       </div>
-      <div className="mt-4 mr-12 lg:mt-0 relative pb-1 pr-2 ">
+      <div className="ml-12 mt-4 mr-12 lg:mt-0 relative pb-1 pr-2 sm:pb-0 sm:pr-0 ">
         <input
-          style={{ borderColor: "rgb(252, 103, 54)" }}
-          className="p-2  pl-12 rounded-xl border-solid border-4"
+          style={{ borderColor: "rgb(252, 103, 54)", color: "rgb(12, 45, 87)" }}
+          className="p-2  pl-10  rounded-xl border-solid border-4"
           type="text"
           name="search"
           placeholder="Search for movies..."

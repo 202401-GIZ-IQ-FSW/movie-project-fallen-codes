@@ -25,20 +25,20 @@ const MoviePage = ({ movie }) => {
             style={{ backdropFilter: "blur(3px)" }}
             className="mx-auto p-16 grid-cols-2 w-full  md:flex justify-between "
           >
-            <div className="mr-4 md:w-80 lg:w-96 rounded-lg">
+            <div className="mr-4 md:w-80  lg:w-96 rounded-lg">
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={movie.title}
-                className="w-auto h-auto mx-auto rounded-lg shadow-lg"
+                className="w-fill h-auto mx-auto rounded-lg shadow-2xl shadow-orange-700 ml-2"
               />
             </div>
             <div
               style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
-              className="p-4 rounded-lg lg: max-w-8/12 md:w-2/3"
+              className="p-4 rounded-lg lg: max-w-8/12 m-2  md:w-2/3 shadow-2xl shadow-orange-700 "
             >
               <h1
                 style={{ color: "rgb(34, 40, 49)" }}
-                className="text-3xl  px-4 py-2 font-bold mb-2 bg-slate-200 rounded-md w-64 shadow-md hover:bg-slate-400"
+                className="text-3xl  px-4 py-2 font-bold mb-2 bg-slate-200 rounded-md w-58 sm:mr-4 shadow-md hover:bg-slate-400"
               >
                 {movie.title}
               </h1>
