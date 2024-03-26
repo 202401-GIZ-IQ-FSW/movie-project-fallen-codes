@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
+import Navbar from "@/components/Navbar/Navbar"
 import MoviePage from '@/components/Pages/MoviePage'
 import { movieData } from '@/data/movieData'
 
@@ -20,9 +21,12 @@ export default function Movie({params}) {
     console.log("fetching-movie")
   }, [])
   
-  return (
-    <div>
-      <MoviePage movie={movie} />
-    </div>
+  return ( 
+    <>
+      <Navbar />
+      <div>
+        <MoviePage movie={movie} />
+      </div>
+    </>
   )
 }

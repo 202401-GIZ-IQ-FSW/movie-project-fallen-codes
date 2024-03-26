@@ -1,26 +1,23 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { moviesData } from '@/data/moviesData'
-import { genresList } from '@/data/genresList'
+import Navbar from '@/components/Navbar/Navbar'
 import MovieCards from '@/components/Cards/MovieCards'
 import NavButtons from "@/components/Buttons/NavButtons"
 
 export default function Movies({params}) {
-  const [movieGenres, setMovieGenres] = useState([]);
   const [movies, setMovies] = useState([]);
-  const [totalPages, setTotalPages] = useState(1)
-  const [pageId, setPageId] = useState(1);
-  const moviesCount = 20;
+  const [selectedMovies, setSelectedMovies] = useState([])
+  const [pageId, setPageId] = useState(1)
+  const [selectedGenre, setSelectedGenre] = useState({})
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        // const movieItems = await moviesData(pageId, params.category)
         const movieItems = await moviesData(params.category)
         const results = movieItems.results
         setMovies(results)
-        const resultsTotalPages = movieItems.total_pages
-        setTotalPages(resultsTotalPages)
       } catch (error) {
         console.error('Error fetching genres:', error)
       }
@@ -28,35 +25,36 @@ export default function Movies({params}) {
     fetchMovies()
     console.log("fetching-movies")
   }, [params.category])
-  // }, [params.category, pageId])
-  
-  useEffect(() => {
-    const fetchGenres = async () => {
-      try {
-        const genreOptions = await genresList()
-        setMovieGenres(genreOptions.genres)
-      } catch (error) {
-        console.error('Error fetching genres:', error)
-      }
-    }
-    fetchGenres()
-    console.log("fetching-genres")
-  }, []);
 
   // Calculate the index range for the movies to display
-  const startIndex = (pageId - 1) * moviesCount
-  const endIndex = startIndex + moviesCount
-  const moviesPerPage = [...movies]
+  const startIndex = (pageId - 1) * 20
+  const endIndex = startIndex + 20
+
+  const moviesToDisplay = movies.filter((movie) => {
+    if (selectedGenre.name === "All" && !searchText) return true;
+    const genreMatch = movie.genre_ids.includes(selectedGenre.id);
+    const nameMatch = movie.title.toLowerCase().includes(searchText.toLowerCase());
+    return genreMatch && nameMatch;
+  });
+
+  // useEffect ( () => {
+  //   setSelectedMovies(movies.filter(movie => movie.genre_ids.includes(selectedGenre.id)))
+  //   setPageId(1)
+  //   console.log("Genre Change " , selectedMovies)
+  // },[selectedGenre])
+
 
   function handleNextPage() {
-    if (pageId >= 1 && pageId <= totalPages) {
-      setPageId((pageId) => pageId += 1) 
+    if (pageId <= Math.floor(moviesToDisplay.length/20)) {
+      setPageId((pageId) => (pageId += 1))
+      console.log("Next Btn Change " , moviesToDisplay)
     }
   }
 
   function handlePrevPage() {
     if (pageId >= 2) {
       setPageId((pageId) => pageId -= 1)
+      console.log("Next Btn Change " , moviesToDisplay)
     }
   }
 
@@ -66,39 +64,38 @@ export default function Movies({params}) {
     })
   }
 
+  function handleSearchChange(event) {
+    setSearchText(event.target.value);
+  }
+
   return (
-    <main
-      style={{ backgroundColor: "rgb(238, 238, 238)" }}
-      className="flex min-h-screen flex-col items-center p-4"
-    >
-      <h2
-        style={{ color: "rgb(49, 54, 63)" }}
-        className={`mb-3 text-2xl font-semibold`}
+    <>
+      <Navbar onSelectedGenre={setSelectedGenre} onSearchChange={handleSearchChange} search={searchText}/>
+      <main
+        style={{ backgroundColor: "rgb(238, 238, 238)" }}
+        className="flex min-h-screen flex-col items-center p-4"
       >
-        {formattedCategory(params.category)}
-      </h2>
-      <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
-      <div className="flex flex-wrap justify-center">
-        {!moviesPerPage.length ? (<h1 className="text-center">Loading......</h1>) :
-          (moviesPerPage.slice(startIndex, endIndex).map(movie => { 
-            const movieGenre = movie.genre_ids.map(genreID => {
-              const genre = movieGenres.find(genre => genre.id === genreID)
-              return genre ? genre.name : '' // Check if genre is defined before accessing its name
-            }).join(", ")
-        
-            return (
-              <MovieCards 
-                key={movie.id}
-                movie={movie}
-                genre={movieGenre} 
-                releaseYear={movie.release_date.slice(0, 4)} 
-                ratings={movie.vote_average.toFixed(1)} // added ratings
-              />
-            )
-          }))
-        }
-      </div>
-      <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
-    </main>
+        <h2
+          style={{ color: "rgb(49, 54, 63)" }}
+          className={`mb-3 text-2xl font-semibold`}
+        >
+          {formattedCategory(params.category)}
+        </h2>
+        <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
+        <div className="flex flex-wrap justify-center">
+          {!moviesToDisplay.length ? (<h1 className="text-center">Loading......</h1>) :
+            (moviesToDisplay.slice(startIndex, endIndex).map(movie => { 
+              return (
+                <MovieCards 
+                  key={movie.id}
+                  movie={movie}
+                />
+              )
+            }))
+          }
+        </div>
+        <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
+      </main>
+    </>
   )
 }

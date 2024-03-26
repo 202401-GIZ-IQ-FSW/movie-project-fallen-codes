@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
         style={{ backgroundColor: "rgb(238, 238, 238)" }}
         className={inter.className}
       >
-        <Navbar />
         {children}
         <Footer />
       </body>

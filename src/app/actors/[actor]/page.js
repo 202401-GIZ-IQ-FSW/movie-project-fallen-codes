@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
+import Navbar from "@/components/Navbar/Navbar"
 import ActorPage from '@/components/Pages/ActorPage'
 import { actorData } from '@/data/actorData'
 
@@ -21,8 +22,11 @@ export default function Actor({params}) {
   }, [])
 
   return (
-    <div>
-      <ActorPage actor={actor}/>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <ActorPage actor={actor}/>
+      </div>
+    </>
   )
 }
