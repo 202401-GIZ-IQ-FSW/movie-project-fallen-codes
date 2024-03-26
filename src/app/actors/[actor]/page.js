@@ -17,7 +17,7 @@ export default function Actor({params}) {
       }
     };
     fetchMovie()
-    console.log("fetching-movie")
+    console.log("fetching-actor")
   }, [])
 
   return (

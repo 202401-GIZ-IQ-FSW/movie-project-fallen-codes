@@ -10,11 +10,13 @@ export default function Home() {
   const [movies, setMovies] = useState([])
   const [totalPages, setTotalPages] = useState(1)
   const [pageId, setPageId] = useState(1)
+  const moviesCount = 20;
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const movieItems = await moviesData(pageId)
+        // const movieItems = await moviesData(pageId)
+        const movieItems = await moviesData()
         const results = movieItems.results
         setMovies(results)
         const resultsTotalPages = movieItems.total_pages
@@ -25,8 +27,9 @@ export default function Home() {
     }
     fetchMovies()
     console.log("fetching-movies")
-  }, [pageId])
-
+  }, [])
+  // }, [pageId])
+  
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -39,6 +42,11 @@ export default function Home() {
     fetchGenres()
     console.log("fetching-genres")
   }, [])
+
+  // Calculate the index range for the movies to display
+  const startIndex = (pageId - 1) * moviesCount
+  const endIndex = startIndex + moviesCount
+  const moviesPerPage = [...movies]
 
   function handleNextPage() {
     if (pageId >= 1 && pageId <= totalPages) {
@@ -65,22 +73,24 @@ export default function Home() {
       </h2>
       <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
       <div className="flex flex-wrap justify-center">
-        {movies.map((movie) => {
-          const movieGenre = movie.genre_ids.map(genreID => {
-            const genre = movieGenres.find(genre => genre.id === genreID)
-            return genre ? genre.name : '' // Check if genre is defined before accessing its name
-          }).join(", ")
+        {!moviesPerPage.length ? (<h1 className="text-center">Loading......</h1>) :
+          (moviesPerPage.slice(startIndex, endIndex).map((movie) => {
+            const movieGenre = movie.genre_ids.map(genreID => {
+              const genre = movieGenres.find(genre => genre.id === genreID)
+              return genre ? genre.name : '' // Check if genre is defined before accessing its name
+            }).join(", ")
 
-          return (
-            <MovieCards
-              key={movie.id}
-              movie={movie}
-              genre={movieGenre}
-              releaseYear={movie.release_date.slice(0, 4)}
-              ratings={movie.vote_average.toFixed(1)} // added ratings
-            />
-          )
-        })}
+            return (
+              <MovieCards
+                key={movie.id}
+                movie={movie}
+                genre={movieGenre}
+                releaseYear={movie.release_date.slice(0, 4)}
+                ratings={movie.vote_average.toFixed(1)} // added ratings
+              />
+            )
+          }))
+        }
       </div>
       <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
     </main>
