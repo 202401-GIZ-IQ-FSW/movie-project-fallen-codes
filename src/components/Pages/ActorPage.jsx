@@ -72,26 +72,6 @@ const ActorPage = ({ actor }) => {
               <p style={{ color: "rgb(49, 54, 63)" }} className="py-3 my-2">
                 <span className="font-bold">Bio: </span> {actor.biography}
               </p>
-
-              <div className="mt-4">
-                <h2
-                  style={{ color: "rgb(49, 54, 63)" }}
-                  className="text-xl font-bold mb-2"
-                >
-                  Famous Movies
-                </h2>
-                <ul>
-                  <li style={{ color: "rgb(49, 54, 63)" }}>Movie 1</li>
-                  <li style={{ color: "rgb(49, 54, 63)" }}>Movie 2</li>
-                  {/* {movies.map( movie => {
-                  return(
-                    <li key={movie.title}>
-                      <Link  href={``} > {movie.title} </Link>
-                    </li>
-                  )
-                })} */}
-                </ul>
-              </div>
             </div>
           </div>
         </main>

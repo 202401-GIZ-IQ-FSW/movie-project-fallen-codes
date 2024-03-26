@@ -113,25 +113,6 @@ const MoviePage = ({ movie }) => {
                 </span>
                 {movie.overview}
               </p>
-              <div className="mt-4">
-                <h2
-                  style={{ color: "rgb(49, 54, 63)" }}
-                  className="text-xl font-bold mb-2"
-                >
-                  Main Actors
-                </h2>
-                <ul>
-                  <li>Actor 1</li>
-                  <li>Actor 2</li>
-                  {/* {actors.map( actor => {
-                  return(
-                    <li key={actor.name}>
-                      <Link  href={``} > {actor.name} </Link>
-                    </li>
-                  )
-                })} */}
-                </ul>
-              </div>
             </div>
           </div>
         </main>
