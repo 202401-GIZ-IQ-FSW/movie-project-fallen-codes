@@ -144,12 +144,12 @@ export default function Home() {
         />
         <div className="flex flex-wrap justify-center">
           { !moviesToDisplay.length ? (Array.from({ length: 20 }).map((_, index) => (
-          <div key={index} className="w-64 sm:w-52 mx-2 my-4 bg-gray-200 rounded-lg shadow-md flex justify-center animate-pulse">
-            {/* Placeholder skeleton */}
-            <div className="loader"></div>
-          </div>
-        )))
-          : (moviesToDisplay.slice(startIndex, endIndex).map((movie, index) => {
+            <div key={index} className="w-64 sm:w-52 mx-2 my-4 bg-gray-200 rounded-lg shadow-md flex justify-center animate-pulse">
+              {/* Placeholder skeleton */}
+              <div className="loader"></div>
+            </div>
+            )))
+            : (moviesToDisplay.slice(startIndex, endIndex).map((movie, index) => {
             // const movieGenre = movie.genre_ids
             //   .map((genreID) => {
             //     const genre = movieGenres.find((genre) => genre.id === genreID)
