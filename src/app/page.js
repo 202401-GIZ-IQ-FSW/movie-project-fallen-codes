@@ -135,7 +135,7 @@ export default function Home() {
       <Navbar onSelectedGenre={setSelectedGenre} onSearchChange={handleSearchChange} search={searchText}/>
       <main
         style={{ backgroundColor: "rgb(12, 45, 87)" }}
-        className="flex min-h-screen flex-col items-center p-4"
+        className="flex min-h-screen flex-col items-center justify-evenly p-4"
       >
         <NavButtons
           pageId={pageId}
@@ -143,7 +143,13 @@ export default function Home() {
           handleNextPage={handleNextPage}
         />
         <div className="flex flex-wrap justify-center">
-          {moviesToDisplay.slice(startIndex, endIndex).map((movie, index) => {
+          { !moviesToDisplay.length ? (Array.from({ length: 20 }).map((_, index) => (
+          <div key={index} className="w-64 sm:w-52 mx-2 my-4 bg-gray-200 rounded-lg shadow-md flex justify-center animate-pulse">
+            {/* Placeholder skeleton */}
+            <div className="loader"></div>
+          </div>
+        )))
+          : (moviesToDisplay.slice(startIndex, endIndex).map((movie, index) => {
             // const movieGenre = movie.genre_ids
             //   .map((genreID) => {
             //     const genre = movieGenres.find((genre) => genre.id === genreID)
@@ -160,7 +166,7 @@ export default function Home() {
                 // ratings={movie.vote_average.toFixed(1)} // added ratings
               />
             )
-          })}
+          }))}
         </div>
         <NavButtons
           pageId={pageId}
