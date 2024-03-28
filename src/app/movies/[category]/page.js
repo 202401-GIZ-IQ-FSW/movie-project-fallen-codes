@@ -4,6 +4,7 @@ import { moviesData } from '@/data/moviesData'
 import { genresList } from '@/data/genresList'
 import MovieCards from '@/components/Cards/MovieCards'
 import NavButtons from "@/components/Buttons/NavButtons"
+import Navbar from "@/components/Navbar/Navbar"
 
 export default function Movies({params}) {
   const [movieGenres, setMovieGenres] = useState([]);
@@ -59,36 +60,39 @@ export default function Movies({params}) {
   }
 
   return (
-    <main
-      style={{ backgroundColor: "rgb(238, 238, 238)" }}
-      className="flex min-h-screen flex-col items-center p-4"
-    >
-      <h2
-        style={{ color: "rgb(49, 54, 63)" }}
-        className={`mb-3 text-2xl font-semibold`}
+    <>
+      <Navbar />
+      <main
+        style={{ backgroundColor: "rgb(238, 238, 238)" }}
+        className="flex min-h-screen flex-col items-center p-4"
       >
-        {formattedCategory(params.category)}
-      </h2>
-      <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
-      <div className="flex flex-wrap justify-center">
-        {movies.map(movie => { 
-          const movieGenre = movie.genre_ids.map(genreID => {
-            const genre = movieGenres.find(genre => genre.id === genreID)
-            return genre ? genre.name : '' // Check if genre is defined before accessing its name
-          }).join(", ")
-        
-                return (
-                    <MovieCards 
-                        key={movie.id}
-                        movie={movie}
-                        genre={movieGenre} 
-                        releaseYear={movie.release_date.slice(0, 4)} 
-                        ratings={movie.vote_average.toFixed(1)} // added ratings
-                    />
-                )
-            })}
-      </div>
-      <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
-    </main>
+        <h2
+          style={{ color: "rgb(49, 54, 63)" }}
+          className={`mb-3 text-2xl font-semibold`}
+        >
+          {formattedCategory(params.category)}
+        </h2>
+        <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
+        <div className="flex flex-wrap justify-center">
+          {movies.map(movie => { 
+            const movieGenre = movie.genre_ids.map(genreID => {
+              const genre = movieGenres.find(genre => genre.id === genreID)
+              return genre ? genre.name : '' // Check if genre is defined before accessing its name
+            }).join(", ")
+          
+                  return (
+                      <MovieCards 
+                          key={movie.id}
+                          movie={movie}
+                          genre={movieGenre} 
+                          releaseYear={movie.release_date.slice(0, 4)} 
+                          ratings={movie.vote_average.toFixed(1)} // added ratings
+                      />
+                  )
+              })}
+        </div>
+        <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
+      </main>
+    </>
   )
 }

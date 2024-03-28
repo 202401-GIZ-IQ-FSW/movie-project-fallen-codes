@@ -8,16 +8,15 @@ import GenresMenu from "../Menu/GenresMenu"
 import MoviesMenu from "../Menu/MoviesMenu"
 import { genresList } from "@/data/genresList"
 
-export default function Navbar() {
+export default function Navbar({onSelectedGenre, onSearchChange, search}) {
   const moviesMenu = ["Now playing", "Popular", "Top Rated", "Upcoming"]
-
   const [genresMenu, setGenresMenu] = useState([])
 
   useEffect(() => {
     const fetchGenres = async () => {
       try {
         const genreOptions = await genresList()
-        setGenresMenu(genreOptions.genres)
+        setGenresMenu([{name:"All"}, ...genreOptions.genres])
       } catch (error) {
         console.error("Error fetching genres:", error)
       }
@@ -51,7 +50,7 @@ export default function Navbar() {
           <MoviesMenu menuType="Movies" selectionMenu={moviesMenu} />
         </div>
         <div className="mx-2 text-white">
-          <GenresMenu menuType="Genres" selectionMenu={genresMenu} />
+          <GenresMenu menuType="Genres" selectionMenu={genresMenu} onSelectedGenre={onSelectedGenre} />
         </div>
         <Link href="/actors" className="mx-1 p-1 text-white">
           Actors
@@ -64,6 +63,8 @@ export default function Navbar() {
           type="text"
           name="search"
           placeholder="Search for movies..."
+          value={search} // Connect input to state
+          onChange={onSearchChange} // Update state when input changes
         />
         <span className="flex items-center p-2 pr-4 absolute left-1 top-1 fill-orange ">
           <Image src={searchIcon} alt="search icon" width={20} />

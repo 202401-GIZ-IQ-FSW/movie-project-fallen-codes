@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import ActorPage from '@/components/Pages/ActorPage'
 import { actorData } from '@/data/actorData'
+import Navbar from "@/components/Navbar/Navbar"
 
 export default function Actor({params}) {
   const [actor, setActor] = useState([]);
@@ -21,8 +22,11 @@ export default function Actor({params}) {
   }, [])
 
   return (
-    <div>
-      <ActorPage actor={actor}/>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <ActorPage actor={actor}/>
+      </div>
+    </>
   )
 }

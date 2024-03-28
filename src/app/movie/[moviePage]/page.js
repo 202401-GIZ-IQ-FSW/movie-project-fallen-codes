@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react"
 import MoviePage from "@/components/Pages/MoviePage"
 import { movieData } from "@/data/movieData"
+import Navbar from "@/components/Navbar/Navbar"
 
 export default function Movie({ params }) {
   const [movie, setMovie] = useState([])
@@ -21,8 +22,11 @@ export default function Movie({ params }) {
   }, [])
 
   return (
-    <div>
-      <MoviePage movie={movie} />
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <MoviePage movie={movie} />
+      </div>
+    </>
   )
 }

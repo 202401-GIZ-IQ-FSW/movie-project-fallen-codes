@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import Image from "next/image"
 import dropDownIcon from "/public/drop-down.svg"
 
-export default function GenresMenu({ menuType, selectionMenu }) {
+export default function GenresMenu({ menuType, selectionMenu, onSelectedGenre }) {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -36,7 +36,10 @@ export default function GenresMenu({ menuType, selectionMenu }) {
               <li
                 className="hover:text-red-900 w-max mr-7"
                 key={option.id}
-                onClick={handleOptionClick}
+                onClick={() => {
+                  handleOptionClick()
+                  onSelectedGenre(option)
+                }}
               >
                 {option.name}
               </li>
