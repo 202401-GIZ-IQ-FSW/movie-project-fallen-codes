@@ -104,7 +104,6 @@ export default function Home() {
 
   function handleSearchChange(event) {
     setSearchText(event.target.value);
-    
   }
 
   function onSelectedGenre(option) {
