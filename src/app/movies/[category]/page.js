@@ -1,48 +1,45 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { moviesData } from '@/data/moviesData'
-import { genresList } from '@/data/genresList'
-import MovieCards from '@/components/Cards/MovieCards'
+import MovieCard from '@/components/Cards/MovieCard'
 import NavButtons from "@/components/Buttons/NavButtons"
 import Navbar from "@/components/Navbar/Navbar"
+import EmptyCardLoader from '@/components/Cards/EmptyCardLoader'
+
 
 export default function Movies({params}) {
-  const [movieGenres, setMovieGenres] = useState([]);
-  const [movies, setMovies] = useState([]);
+
+  const [moviesToDisplay, setMoviesToDisplay] = useState([]);
   const [totalPages, setTotalPages] = useState(1)
   const [pageId, setPageId] = useState(1);
+  const [selectedGenre, setSelectedGenre] = useState({name:"All"})
+  const searchType = "Movies"
+  
+  const fetchMovies = async () => {
+    try {
+      const movieItems = await moviesData(pageId)
+      const results = movieItems.results
+      setMoviesToDisplay(results)
+      const resultsTotalPages = movieItems.total_pages
+      setTotalPages(resultsTotalPages)
+    } catch (error) {
+      console.error('Error fetching genres:', error)
+    }
+  }
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const movieItems = await moviesData(pageId, params.category)
-        const results = movieItems.results
-        setMovies(results)
-        const resultsTotalPages = movieItems.total_pages
-        setTotalPages(resultsTotalPages)
-      } catch (error) {
-        console.error('Error fetching genres:', error)
-      }
-    };
     fetchMovies()
     console.log("fetching-movies")
   }, [params.category, pageId])
-  
-  useEffect(() => {
-    const fetchGenres = async () => {
-      try {
-        const genreOptions = await genresList()
-        setMovieGenres(genreOptions.genres)
-      } catch (error) {
-        console.error('Error fetching genres:', error)
-      }
-    }
-    fetchGenres()
-    console.log("fetching-genres")
-  }, []);
 
+  const filteredMovies = moviesToDisplay?.filter((movie) => {
+    if (selectedGenre.name === "All") return true
+    const genreMatch = movie.genre_ids.includes(selectedGenre.id)
+    return genreMatch;
+    })
+  
   function handleNextPage() {
-    if (pageId >= 1 && pageId <= totalPages) {
+    if (pageId < totalPages) {
       setPageId((pageId) => pageId += 1) 
     }
   }
@@ -61,7 +58,7 @@ export default function Movies({params}) {
 
   return (
     <>
-      <Navbar />
+      <Navbar onSelectedGenre={setSelectedGenre} searchType={searchType} />
       <main
         style={{ backgroundColor: "rgb(238, 238, 238)" }}
         className="flex min-h-screen flex-col items-center p-4"
@@ -73,24 +70,17 @@ export default function Movies({params}) {
           {formattedCategory(params.category)}
         </h2>
         <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
-        <div className="flex flex-wrap justify-center">
-          {movies.map(movie => { 
-            const movieGenre = movie.genre_ids.map(genreID => {
-              const genre = movieGenres.find(genre => genre.id === genreID)
-              return genre ? genre.name : '' // Check if genre is defined before accessing its name
-            }).join(", ")
-          
-                  return (
-                      <MovieCards 
-                          key={movie.id}
-                          movie={movie}
-                          genre={movieGenre} 
-                          releaseYear={movie.release_date.slice(0, 4)} 
-                          ratings={movie.vote_average.toFixed(1)} // added ratings
-                      />
-                  )
-              })}
-        </div>
+          { !filteredMovies?.length ? 
+                ( <div className='flex flex-row items-center'>
+                    <EmptyCardLoader/>
+                  </div> )
+              :
+                ( <div className="flex flex-wrap justify-center">
+                    { filteredMovies.map(movie => 
+                        <MovieCard  key={movie.id} movie={movie} />
+                     )}
+                  </div> )
+              }
         <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
       </main>
     </>

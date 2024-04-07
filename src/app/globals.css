@@ -34,8 +34,8 @@ body {
 
 /* HTML: <div class="loader"></div> */
 .loader {
-  width: 16rem; /* 100% of the viewport width */
-  height: 20rem; /* 100% of the viewport height */
+  /* width: 16rem; 100% of the viewport width */
+  /* height: 20rem; 100% of the viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,8 +46,8 @@ body {
   width: 50px;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 8px solid lightblue;
-  border-right-color: orange;
+  border: 8px solid rgb(190, 205, 226);
+  border-right-color: rgb(252, 103, 54);
   animation: l2 1s infinite linear;
 }
 
