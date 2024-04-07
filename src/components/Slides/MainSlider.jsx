@@ -41,9 +41,10 @@ export default function MainSlider({ movies }) {
                 autoPlaySpeed={3000} // Adjust the speed as needed
                 infinite
               >
-                { movies.map((movie, index) => (
-                  <Link key={index} href={`/movie/${movie.id}?${movie.title.toLowerCase().replace(/ /g, "_")}`}>
+                { movies.map((movie, movieIndex) => (
+                  <Link href={`/movie/${movie.id}?${movie.title.toLowerCase().replace(/ /g, "_")}`}>
                     <div
+                      key={movieIndex}
                       className="flex justify-center items-center relative bg-cover bg-no-repeat bg-center p-4 rounded-lg"
                       style={{
                         backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
