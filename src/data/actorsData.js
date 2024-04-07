@@ -1,9 +1,7 @@
-const API_KEY = "87227e85299796fb4f134e6af5a95925" ;
-const baseUrl = "https://api.themoviedb.org/3/person/"
-const apiKey = `?api_key=${API_KEY}&language=en-US&page=`; 
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-export const actorsData = async (pageId=1, urlCategory="popular") => {
-    const url = baseUrl + urlCategory + apiKey + pageId.toString();
+export const actorsData = async (pageId=1) => {
+    const url = `https://api.themoviedb.org/3/trending/person/week?api_key=${API_KEY}&language=en-US&page=${pageId}`
     const res = await fetch(url);
     const data = res.json();
     return data;

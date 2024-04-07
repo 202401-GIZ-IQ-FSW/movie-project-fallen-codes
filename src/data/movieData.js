@@ -1,9 +1,7 @@
-const API_KEY = "87227e85299796fb4f134e6af5a95925" ;
-const baseUrl = "https://api.themoviedb.org/3/movie/"
-const apiKey = `?api_key=${API_KEY}&language=en-US`; 
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-export const movieData = async (movieId) => {
-    const url = baseUrl + movieId.toString() + apiKey;
+export const movieData = async (movieId, endpoint="") => {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}${endpoint}?api_key=${API_KEY}&language=en-US`;
     const res = await fetch(url);
     const data = res.json();
     return data;

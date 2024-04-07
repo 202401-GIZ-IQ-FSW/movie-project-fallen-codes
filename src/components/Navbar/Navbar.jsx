@@ -1,73 +1,67 @@
 "use client"
-import React, { useState, useEffect } from "react"
-import Image from "next/image"
+import React, {useState, useEffect} from "react"
 import Link from "next/link"
+import Image from "next/image"
 import Logo from "/public/logo-black.svg"
-import searchIcon from "/public/search-icon.svg"
 import GenresMenu from "../Menu/GenresMenu"
 import MoviesMenu from "../Menu/MoviesMenu"
 import { genresList } from "@/data/genresList"
+import SearchField from "../SearchField/SearchField"
 
-export default function Navbar() {
-  const moviesMenu = ["Now playing", "Popular", "Top Rated", "Upcoming"]
+export default function Navbar({onSelectedGenre, onSearchChange, searchType, inSearchPage=false}) {
 
   const [genresMenu, setGenresMenu] = useState([])
 
-  useEffect(() => {
-    const fetchGenres = async () => {
-      try {
-        const genreOptions = await genresList()
-        setGenresMenu(genreOptions.genres)
-      } catch (error) {
-        console.error("Error fetching genres:", error)
-      }
+  const fetchGenres = async () => {
+    try {
+      const genreOptions = await genresList
+      setGenresMenu([{name:"All"}, ...genreOptions.genres])
+    } catch (error) {
+      console.error("Error fetching genres:", error)
     }
+  }
+
+  useEffect(() => {
     fetchGenres()
     console.log("fetching-genres-navbar")
   }, [])
 
+
   return (
     <nav
       style={{ backgroundColor: "rgb(12, 45, 87)" }}
-      className="flex flex-wrap lg:flex-row justify-center lg:justify-between items-center "
+      className="pb-4 flex flex-col justify-center items-center lg:flex-row lg:justify-between"
     >
-      <div className="flex flex-row items-center">
-        <Image
-          style={{ borderColor: "rgb(252, 103, 54)" }}
-          className="mr-2 rounded-full m-4 size-36 bg-transparent border-solid border-4"
-          src={Logo}
-          alt="site logo"
-          width={100}
-        />
+      <div className="lg:mx-4">
+        <Link href="/" >
+          <Image
+            style={{ borderColor: "rgb(252, 103, 54)" }}
+            className="rounded-full m-4 ml-2 size-36 bg-transparent border-solid border-4"
+            src={Logo}
+            alt="site logo"
+            width={100}
+          />
+        </Link>
       </div>
       <div
         style={{ backgroundColor: "rgb(252, 103, 54)" }}
-        className=" rounded-2xl mt-4 mx-0 lg:mt-2 px-4 py-2 flex flex-row items-center border-solid border-2 border-white"
+        className="w-11/12 md:w-3/6 lg:w-2/6 rounded-2xl mt-4 lg:ml-8 lg:mt-2 px-4 py-2 flex flex-row justify-center items-center border-solid border-2 border-white"
       >
-        <Link href="/" className="mx-2 p-2 text-white">
+        <Link href="/" className="mx-2 p-2 text-white hover:text-[#0C2D57]">
           Home
         </Link>
-        <div className="mx-2 text-white">
-          <MoviesMenu menuType="Movies" selectionMenu={moviesMenu} />
+        <div className="mx-2 text-white ">
+          <MoviesMenu />
         </div>
         <div className="mx-2 text-white">
-          <GenresMenu menuType="Genres" selectionMenu={genresMenu} />
+          <GenresMenu selectionMenu={genresMenu} onSelectedGenre={onSelectedGenre} />
         </div>
-        <Link href="/actors" className="mx-1 p-1 text-white">
+        <Link href="/actors" className="mx-2 p-2 text-white hover:text-[#0C2D57]">
           Actors
         </Link>
       </div>
-      <div className="ml-12 mt-4 mr-12 lg:mt-0 relative pb-1 pr-2 sm:pb-0 sm:pr-0 ">
-        <input
-          style={{ borderColor: "rgb(252, 103, 54)", color: "rgb(12, 45, 87)" }}
-          className="p-2  pl-10  rounded-xl border-solid border-4"
-          type="text"
-          name="search"
-          placeholder="Search for movies..."
-        />
-        <span className="flex items-center p-2 pr-4 absolute left-1 top-1 fill-orange ">
-          <Image src={searchIcon} alt="search icon" width={20} />
-        </span>
+      <div className="flex justify-center mt-4 lg:mt-2 lg:mr-12 relative pb-1 pl-1 sm:pb-0 sm:pr-0 ">
+        <SearchField searchType={searchType} onSearchChange={onSearchChange} inSearchPage={inSearchPage}/>
       </div>
     </nav>
   )
