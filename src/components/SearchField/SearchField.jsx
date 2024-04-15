@@ -57,7 +57,7 @@ export default function SearchField({searchType, onSearchChange, inSearchPage}) 
             ( <div
               className="absolute rounded-lg bg-black text-white top-full py-2 px-2 overflow-auto max-h-44 md:max-h-72 w-full shadow-md z-20">
                 { searchResults?.map((item) => (
-                    <Link href={`/movie/${item.id}`} key={item.id}>
+                    <Link key={item.id} href={ listType ? `/movie/${item.id}?${item.title.toLowerCase().replace(/ /g, "_")}` : `/actors/${item.id}?${item.name.toLowerCase().replace(/ /g, "_")}` }>
                       <div onBlur={()=>setShowResults(false)} className="p-1 flex flex-row items-start max-w-full rounded-lg hover:bg-slate-600">
                         <img
                           className="w-14 mr-2 rounded-lg"
