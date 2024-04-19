@@ -38,11 +38,11 @@ export default function Search({ params }) {
     console.log("fetching-movies-search-page")
   }, [searchText, pageId])
 
-  const filteredMovies = searchResults.filter((movie) => {
+  const filteredMovies = listType ? searchResults.filter((movie) => {
     if (selectedGenre.name === "All") return true
     const genreMatch = movie.genre_ids.includes(selectedGenre.id)
     return genreMatch;
-    })
+    }) : searchResults;
     
   function handleNextPage() {
     if (pageId < totalPages) {
@@ -69,36 +69,33 @@ export default function Search({ params }) {
         searchType={searchTypeCap}
         inSearchPage={true}
         />
-      <main
-        style={{ backgroundColor: "rgb(238, 238, 238)" }}
-        className="flex min-h-screen flex-col items-center p-4"
-      >
-        <h2
-          style={{ color: "rgb(49, 54, 63)" }}
-          className={`mb-3 text-2xl font-semibold`}
-        >
-          {searchTypeCap}
+      <main className="flex min-h-screen flex-col items-center p-4 bg-[#EEEEEE]">
+        <h2 className={`mb-3 text-2xl font-semibold text-[#31363F]`}>
+          Search Results
         </h2>
-          {!searchResults.length?
-            (<div className='flex flex-row items-center'><EmptyCard/></div>)
-            :
-            (
-              <>
-                <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
-                <div className="flex flex-wrap justify-center">
-                  {filteredMovies.map(item => { 
-                    return (
-                      listType? 
-                      (<MovieCard key={item.id} movie={item}/>)
-                      : 
-                      (<ActorCard key={item.id} actor={item}/>)
-                    )
-                  })}
-                </div>
-                <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
-              </>
-            )
-          }
+        <h3 className={`mb-3 text-xl font-semibold text-[#31363F]`}>
+          {searchTypeCap}
+        </h3>
+        {!searchResults.length?
+          (<div className='flex flex-row items-center'><EmptyCard/></div>)
+          :
+          (
+            <>
+              <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
+              <div className="flex flex-wrap justify-center">
+                {filteredMovies.map(item => { 
+                  return (
+                    listType? 
+                    (<MovieCard key={item.id} movie={item}/>)
+                    : 
+                    (<ActorCard key={item.id} actor={item}/>)
+                  )
+                })}
+              </div>
+              <NavButtons pageId={pageId} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage} />
+            </>
+          )
+        }
       </main>
     </>
   )
