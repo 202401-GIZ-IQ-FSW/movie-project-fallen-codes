@@ -77,7 +77,7 @@ const MoviePage = async ({ movie, credits, displayMovies, trailers }) => {
                 >
                   Languages:{" "}
                 </span>{" "}
-                <span className="font-bold text-nowrap" style={{ color: "rgb(252, 103, 54)" }}>
+                <span className="font-bold" style={{ color: "rgb(252, 103, 54)" }}>
                   {languages}
                 </span>
               </p>
@@ -110,7 +110,7 @@ const MoviePage = async ({ movie, credits, displayMovies, trailers }) => {
                 >
                   Genres:{" "}
                 </span>
-                <span className="font-bold text-nowrap" style={{ color: "rgb(252, 103, 54)" }}>
+                <span className="font-bold" style={{ color: "rgb(252, 103, 54)" }}>
                   {genres}
                 </span>
               </p>
