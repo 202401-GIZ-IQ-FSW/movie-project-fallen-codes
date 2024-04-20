@@ -55,7 +55,7 @@ const ActorPage = ({ actor, actorMovies }) => {
               >
                 {actor.name}
               </h1>
-              <p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
@@ -66,7 +66,7 @@ const ActorPage = ({ actor, actorMovies }) => {
                   {actor.birthday}
                 </span>
               </p>
-              <p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
@@ -75,7 +75,7 @@ const ActorPage = ({ actor, actorMovies }) => {
                 </span>
                 <span style={{ color: "rgb(49, 54, 63)" }}>{gender}</span>
               </p>
-              <p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
@@ -86,7 +86,7 @@ const ActorPage = ({ actor, actorMovies }) => {
                   {actor.place_of_birth}
                 </span>
               </p>
-              <p style={{ color: "rgb(49, 54, 63)" }} className="flex flex-row  py-3 my-2">
+              <p style={{ color: "rgb(49, 54, 63)" }} className="flex flex-row px-4 py-1">
                 <span className="font-bold">Bio:</span>
                 { actor?.biography?.length > 300 ? 
                     ( <button className="pl-1 flex flex-wrap items-start group hover:cursor-pointer">

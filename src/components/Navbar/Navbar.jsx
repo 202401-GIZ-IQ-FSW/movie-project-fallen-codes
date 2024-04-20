@@ -14,7 +14,7 @@ export default function Navbar({onSelectedGenre, onSearchChange, searchType, inS
 
   const fetchGenres = async () => {
     try {
-      const genreOptions = await genresList
+      const genreOptions = await genresList()
       setGenresMenu([{name:"All"}, ...genreOptions.genres])
     } catch (error) {
       console.error("Error fetching genres:", error)
@@ -25,7 +25,6 @@ export default function Navbar({onSelectedGenre, onSearchChange, searchType, inS
     fetchGenres()
     console.log("fetching-genres-navbar")
   }, [])
-
 
   return (
     <nav

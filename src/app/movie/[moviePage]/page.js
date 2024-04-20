@@ -12,7 +12,7 @@ export default async function Movie({ params }) {
   const trailers = await movieData(movieId, `/videos`)
   const recommendMovies = await movieData(movieId, `/recommendations`)
   const similarMovies = await movieData(movieId, `/similar`)
-  const displayMovies = await recommendMovies?.length ? recommendMovies : similarMovies
+  const displayMovies = await recommendMovies?.results?.length ? recommendMovies : similarMovies
 
   return (
     <>

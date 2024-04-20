@@ -11,8 +11,8 @@ export default async function Home() {
   
   for (const category of categoriesAll) {
     let movieItems = []
-    movieItems = await moviesData(currentPage, category);
-    allMoviesArray.push(movieItems.results);
+    movieItems = await moviesData(currentPage, category)
+    allMoviesArray.push(movieItems.results)
   }
     
   return (

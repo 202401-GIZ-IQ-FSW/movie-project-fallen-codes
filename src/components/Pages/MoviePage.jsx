@@ -10,9 +10,11 @@ const MoviePage = async ({ movie, credits, displayMovies, trailers }) => {
     ? Math.floor(movie?.vote_average * 10) / 10
     : "N/A")
   const overview = movie?.overview.slice(0,200)
-  const director = credits?.length ? credits.crew.find((person) => person?.job === "Director")?.name : ""
+  const director = credits ? credits.crew.find((person) => person?.job === "Director")?.name : ""
   const mainTrailer = trailers?.results?.find((video) => video?.site === "YouTube" && video?.type === "Trailer")
-  
+  const genres = movie?.genres.map(genre => genre.name).join(" | ")
+  const languages = movie?.spoken_languages.map(language => language.name).join(" | ")
+
   return (
     <>
       {movie && (
@@ -46,69 +48,84 @@ const MoviePage = async ({ movie, credits, displayMovies, trailers }) => {
               >
                 {movie.title}
               </h1>
-              <p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
                 >
                   Release Date:{" "}
                 </span>
-                <span style={{ color: "rgb(252, 103, 54)" }}>
+                <span className="font-bold" style={{ color: "rgb(252, 103, 54)" }}>
                   {movie.release_date}
                 </span>
               </p>
-              <p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
                 >
                   Runtime:{" "}
                 </span>
-                <span style={{ color: "rgb(252, 103, 54)" }}>
+                <span className="font-bold" style={{ color: "rgb(252, 103, 54)" }}>
                   {movie.runtime}
                 </span>
               </p>
-              <p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
                 >
-                  Language:{" "}
+                  Languages:{" "}
                 </span>{" "}
-                <span style={{ color: "rgb(252, 103, 54)" }}>
-                  {movie.original_language?movie.original_language.toUpperCase():""}
+                <span className="font-bold text-nowrap" style={{ color: "rgb(252, 103, 54)" }}>
+                  {languages}
                 </span>
               </p>
-              <p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(252, 103, 54)" }}
                   className="font-bold"
                 >
                   Rating:{" "}
                 </span>
-                <span style={{ color: "rgb(252, 103, 54)" }}>{ratings}</span>
+                <span className="font-bold" style={{ color: "rgb(252, 103, 54)" }}>
+                  {ratings}
+                </span>
               </p>
-              <p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
                 >
                   Votes:{" "}
                 </span>
-                <span style={{ color: "rgb(252, 103, 54)" }}>
+                <span className="font-bold" style={{ color: "rgb(252, 103, 54)" }}>
                   {movie.vote_count}
                 </span>
               </p>
-              <p>
+              <p className="px-4 py-1">
+                <span
+                  style={{ color: "rgb(49, 54, 63)" }}
+                  className="font-bold"
+                >
+                  Genres:{" "}
+                </span>
+                <span className="font-bold text-nowrap" style={{ color: "rgb(252, 103, 54)" }}>
+                  {genres}
+                </span>
+              </p>
+              <p className="px-4 py-1">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
                 >
                   Director:{" "}
                 </span>
-                <span className="text-[#fc6736]">{director}</span>
+                <span className="text-[#fc6736] font-bold">
+                  {director}
+                </span>
               </p>
-              <p style={{ color: "rgb(49, 54, 63)" }} className="py-3 my-2">
+              <p style={{ color: "rgb(49, 54, 63)" }} className="py-1 px-4">
                 <span
                   style={{ color: "rgb(49, 54, 63)" }}
                   className="font-bold"
@@ -119,14 +136,14 @@ const MoviePage = async ({ movie, credits, displayMovies, trailers }) => {
                     ( <button className="pl-1 flex flex-wrap items-start group hover:cursor-pointer">
                         <span className="text-left block group-focus:hidden">{overview}...</span>
                         <span className="text-left hidden group-focus:block">{movie.overview}</span>
-                        <span className="block group-focus:hidden text-[#fc6736] hover:text-[red]" >Read More</span>
+                        <span className="block group-focus:hidden text-[#fc6736] hover:text-[red] font-bold" >Read More</span>
                         <span className="hidden group-focus:block" ></span>
                       </button> )
                   : 
                     ( <span className="text-left">{movie.overview}</span> )
                   }
               </p>
-              <div className='flex flex-col justify-start'>
+              <div className='flex flex-col justify-start py-1 px-4'>
                 <p style={{ color: "rgb(49, 54, 63)" }} className="">
                   <span style={{ color: "rgb(49, 54, 63)" }} className="font-bold">
                     Production Companies: 
