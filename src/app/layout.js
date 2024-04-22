@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Living Plus",
-  description: "Movies, TV Shows and Actors Database",
+  description: "Movies and Actors Database",
 }
 
 export default function RootLayout({ children }) {

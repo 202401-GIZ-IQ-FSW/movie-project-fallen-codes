@@ -17,7 +17,7 @@ export default function Movies({params}) {
   
   const fetchMovies = async () => {
     try {
-      const movieItems = await moviesData(pageId)
+      const movieItems = await moviesData(pageId, params.category)
       const results = movieItems.results
       setMoviesToDisplay(results)
       const resultsTotalPages = movieItems.total_pages
